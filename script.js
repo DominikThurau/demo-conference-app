@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { peer, connection, msg, data } from "./webrtc.js";
 
 var config = {
   type: Phaser.AUTO,
@@ -23,6 +24,7 @@ let keyS;
 let keyD;
 let keyW;
 let isOverlapping = false;
+export let position = { x: 0, y: 0 };
 
 function preload() {
   this.load.image("player", "assets/mario.jpeg");
@@ -31,6 +33,9 @@ function preload() {
 
 function create() {
   //create keys
+  console.log("MSG", msg);
+  console.log("Peer", peer);
+  console.log("Connection", connection);
 
   //create keys
   this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -53,6 +58,9 @@ function create() {
 }
 
 function update() {
+  position.x = this.player.x;
+  position.y = this.player.y;
+
   const moveSpeed = 500;
   this.player.setDrag(5000);
   if (this.cursorKeys.left.isDown || this.keyA.isDown) {
@@ -64,6 +72,7 @@ function update() {
   } else if (this.cursorKeys.down.isDown || this.keyS.isDown) {
     this.player.setVelocityY(moveSpeed);
   }
+  //console.log(this.player.x, this.player.y);
   //print hello on overlap
   this.physics.add.overlap(this.player, this.telefonzelle, () => {
     //if isOverlapping is false, print hello

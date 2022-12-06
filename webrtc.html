@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <style>
+        #outgoing {
+            width: 600px;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+    </style>
+    <form>
+        <textarea id="input"></textarea>
+        <button id="connectBtn">connect</button>
+        <button id="streamBtn">start stream</button>
+    </form>
+    <div>
+        <h2>My Video</h2>
+        <video id="myVideo"></video>
+    </div>
+    <div>
+        <h2>Remote Video</h2>
+        <video id="remoteVideo"></video>
+    </div>
+
+    <pre id="myID"></pre>
+    <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
+    <script src="webrtc.js" type="module"></script>
+
+</body>
+
+</html>

@@ -5,4 +5,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   type: "module",
   plugins: [vue()],
+  define: {
+    global: "window",
+  },
 });
